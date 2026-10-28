@@ -23,7 +23,7 @@ public class TallerExcepciones {
             System.out.println("Ingrese el segundo numero: ");
             int numero2 = Integer.parseInt(scanner.nextLine());
             
-            System.out.print("Ingrese la operación (+, -, *, /): ");
+            System.out.println("Ingrese la operacion (+, -, *, /): ");
             String operacion = scanner.nextLine();
             
             int resultado = 0;
@@ -45,11 +45,37 @@ public class TallerExcepciones {
                     resultado = numero1 / numero2;
                     break;
                 default:
-                    // Ahora solo envías la variable 'operacion', tu clase arma el mensaje
                     throw new OperacionInvalidaException(operacion);
             }
             
+            
+            if("+".equals(operacion)){
+                System.out.println("El resultado de la suma entre " + numero1 + " y " +numero2 + " es: "+resultado);
+            }
+            if("-".equals(operacion)){
+                System.out.println("El resultado de la resta entre " + numero1 + " y " +numero2 + " es: "+resultado);
+            }
+            if("*".equals(operacion)){
+                System.out.println("El resultado de la multiplicacion entre " + numero1 + " y " +numero2 + " es: "+resultado);
+            }
+            if("/".equals(operacion)){
+                System.out.println("El resultado de la divicion entre " + numero1 + " y " +numero2 + " es: "+resultado);
+            }
+            
+        }catch (NumberFormatException e) {
+            System.out.println("Error: Entrada no numerica. Debe ingresar un numero entero valido.");
+            
+        } catch (ArithmeticException e) {
+            System.out.println("Error aritmetico: " + e.getMessage());
+            
+        } catch (OperacionInvalidaException e) {
+            System.out.println("Error de operacion: " + e.getMessage());
+            
+        } finally {
+            System.out.println("Cerrando el Scanner");
+            scanner.close();
         }
+    }
             
     
         
